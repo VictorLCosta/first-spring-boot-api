@@ -10,12 +10,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GreetingController {
 
-    private static final String template = "Hello, %s";
     private final AtomicLong counter = new AtomicLong();
     
-    @RequestMapping(value = "/greeting/{name}", method = RequestMethod.GET)
-    public Greeting greeting(@PathVariable(value = "name") String name) {
-        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+    @RequestMapping(value = "/sum/{numberOne}/{numberTwo}", method = RequestMethod.GET)
+    public Double greeting(
+        @PathVariable(value = "numberOne") String numberOne, 
+        @PathVariable(value = "numberTwo") String numberTwo
+    ) throws Exception {
+        
+        if(!isNumeric(numberTwo) || !isNumeric(numberTwo))
+            throw new Exception();
+
+        return convertToDouble(numberTwo) + convertToDouble(numberOne);
+    }
+
+    private Double convertToDouble(String strNumber) {
+        return null;
+    }
+
+    private boolean isNumeric(String strNumber) {
+        return false;
     }
 
 }
