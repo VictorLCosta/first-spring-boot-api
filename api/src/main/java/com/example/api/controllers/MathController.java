@@ -1,13 +1,13 @@
-package com.example.api;
+package com.example.api.controllers;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.converters.NumberConverter;
-import com.example.exceptions.UnsupportedMathOperationException;
-import com.example.math.SimpleMath;
+import com.example.api.converters.NumberConverter;
+import com.example.api.exceptions.UnsupportedMathOperationException;
+import com.example.api.math.SimpleMath;
 
 @RestController
 public class MathController {

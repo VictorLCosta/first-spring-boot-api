@@ -1,4 +1,4 @@
-package com.example.math;
+package com.example.api.math;
 
 public class SimpleMath {
 

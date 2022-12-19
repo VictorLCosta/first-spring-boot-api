@@ -1,4 +1,4 @@
-package com.example.converters;
+package com.example.api.converters;
 
 public class NumberConverter {
 
