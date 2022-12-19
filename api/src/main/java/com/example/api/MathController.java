@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.exceptions.UnsupportedMathOperationException;
+
 @RestController
-public class GreetingController {
+public class MathController {
 
     private final AtomicLong counter = new AtomicLong();
     
@@ -18,8 +20,8 @@ public class GreetingController {
         @PathVariable(value = "numberTwo") String numberTwo
     ) throws Exception {
 
-        if(!isNumeric(numberTwo) || !isNumeric(numberTwo))
-            throw new Exception();
+        if(!isNumeric(numberTwo) || !isNumeric(numberOne))
+            throw new UnsupportedMathOperationException("Please set a numeric value");
 
         return convertToDouble(numberTwo) + convertToDouble(numberOne);
     }
