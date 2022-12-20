@@ -1,5 +1,7 @@
 package com.example.api.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 
@@ -14,6 +16,18 @@ public class PersonService {
 
     private Logger logger = Logger.getLogger(PersonService.class.getName());
 
+    public List<Person> findAll() {
+        var persons = new ArrayList<Person>();
+
+        for (int i = 0; i < 8; i++) {
+            Person person = mockPerson(i);
+
+            persons.add(person);
+        }
+
+        return persons;
+    }
+
     public Person findById(String id) {
         logger.info("Finding one person");
 
@@ -24,6 +38,18 @@ public class PersonService {
         person.setLastName("Lima");
         person.setAddress("Rua Auimbaue - 232");
         person.setGender("Male");
+
+        return person;
+    }
+
+    private Person mockPerson(int i) {
+        var person = new Person();
+
+        person.setId(counter.incrementAndGet());
+        person.setFirstName("Person name " + i);
+        person.setLastName("Last name " + i);
+        person.setAddress("Some address in Brazil " + i);
+        person.setGender("Unknown");
 
         return person;
     }
