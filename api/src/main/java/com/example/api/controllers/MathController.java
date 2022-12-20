@@ -12,8 +12,6 @@ import com.example.api.math.SimpleMath;
 @RestController
 public class MathController {
 
-    // private final AtomicLong counter = new AtomicLong();
-
     private SimpleMath math = new SimpleMath();
     
     @RequestMapping(value = "/sum/{numberOne}/{numberTwo}", method = RequestMethod.GET)
