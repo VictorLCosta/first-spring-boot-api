@@ -1,4 +1,4 @@
-package com.example.api.models;
+package com.example.api.data.vo;
 
 import java.io.Serializable;
 
@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "person")
-public class Person implements Serializable {
+public class PersonVO implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class Person implements Serializable {
     @Column(nullable = false, length = 80)
     private String gender;
 
-    public Person() {}
+    public PersonVO() {}
 
     public long getId() {
         return id;
@@ -91,7 +91,7 @@ public class Person implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Person other = (Person) obj;
+        PersonVO other = (PersonVO) obj;
         if (id != other.id)
             return false;
         if (firstName == null) {
@@ -115,6 +115,7 @@ public class Person implements Serializable {
         } else if (!gender.equals(other.gender))
             return false;
         return true;
-    }    
+    }
     
 }
+

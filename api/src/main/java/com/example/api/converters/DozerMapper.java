@@ -1,4 +1,4 @@
-package com.example.api.mapper;
+package com.example.api.converters;
 
 import java.util.ArrayList;
 import java.util.List;
