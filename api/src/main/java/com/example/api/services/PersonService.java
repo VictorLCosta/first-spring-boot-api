@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.api.converters.DozerMapper;
+import com.example.api.converters.custom.PersonMapper;
 import com.example.api.data.models.Person;
 import com.example.api.data.vo.PersonVO;
 import com.example.api.data.vo.v2.PersonVOV2;
@@ -17,6 +18,9 @@ import com.example.api.repositories.PersonRepository;
 public class PersonService {
 
     private Logger logger = Logger.getLogger(PersonService.class.getName());
+
+    @Autowired
+    private PersonMapper mapper;
 
     @Autowired
     private PersonRepository personRepository;
@@ -39,8 +43,8 @@ public class PersonService {
     public PersonVOV2 createPersonV2(PersonVOV2 person) {
         logger.info("Creating a person");
 
-        var entity = DozerMapper.parseObject(person, Person.class);
-        var vo =  DozerMapper.parseObject(personRepository.save(entity), PersonVOV2.class);
+        var entity = mapper.convertVoTOEntity(person);
+        var vo =  mapper.convertEntityToVo(entity);
 
         return vo;
     }
