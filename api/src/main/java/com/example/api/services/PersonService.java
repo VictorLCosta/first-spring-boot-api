@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.api.converters.DozerMapper;
 import com.example.api.data.models.Person;
 import com.example.api.data.vo.PersonVO;
+import com.example.api.data.vo.v2.PersonVOV2;
 import com.example.api.exceptions.ResourceNotFoundException;
 import com.example.api.repositories.PersonRepository;
 
@@ -33,6 +34,15 @@ public class PersonService {
             .orElseThrow(() -> new ResourceNotFoundException("Meu pipi no seu popo"));
 
         return DozerMapper.parseObject(entity, PersonVO.class);
+    }
+
+    public PersonVOV2 createPersonV2(PersonVOV2 person) {
+        logger.info("Creating a person");
+
+        var entity = DozerMapper.parseObject(person, Person.class);
+        var vo =  DozerMapper.parseObject(personRepository.save(entity), PersonVOV2.class);
+
+        return vo;
     }
 
     public PersonVO createPerson(PersonVO person) {
