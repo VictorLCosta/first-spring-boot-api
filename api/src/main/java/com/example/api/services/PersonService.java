@@ -44,7 +44,7 @@ public class PersonService {
         logger.info("Creating a person");
 
         var entity = mapper.convertVoTOEntity(person);
-        var vo =  mapper.convertEntityToVo(entity);
+        var vo =  mapper.convertEntityToVo(personRepository.save(entity));
 
         return vo;
     }
